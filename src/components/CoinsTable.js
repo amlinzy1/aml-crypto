@@ -1,10 +1,9 @@
-import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography   } from '@material-ui/core';
+import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, makeStyles   } from '@material-ui/core';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
- import { makeStyles } from '@material-ui/styles';
 import { Classnames } from 'react-alice-carousel';
 
 
@@ -95,7 +94,29 @@ const handleSearch= () => {
                                 display: "flex",
                                 gap: 15,
                                }}
-                               ></TableCell>
+                               >
+                                <img
+                                  src={row.image}
+                                  alt={row.name}
+                                  height="50"
+                                  style={{ marginBottom: 10 }}
+                                />
+                                 <div
+                            style={{ display: "flex", flexDirection: "column" }}
+                          >
+                            <span
+                              style={{
+                                textTransform: "uppercase",
+                                fontSize: 22,
+                              }}
+                            >
+                              {row.symbol}
+                            </span>
+                            <span style={{ color: "black" }}>
+                              {row.name}
+                            </span>
+                          </div>
+                               </TableCell>
                             </TableRow>
                           );
                         })}
