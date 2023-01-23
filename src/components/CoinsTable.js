@@ -1,19 +1,22 @@
-import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, makeStyles   } from '@material-ui/core';
+import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography  } from '@material-ui/core';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 import { Classnames } from 'react-alice-carousel';
+import { numberWithCommas } from './Banner/Carousel';
+import { Pagination } from '@material-ui/lab';
 
 
 const CoinsTable = () => {
 const [coins, setCoins] = useState([]);
 const [loading, setLoading] = useState(false);
 const [search, setSearch] = useState("");
+const [page, setPage] = useState(1);
 const navigate = useNavigate();
 
- const { currency } = CryptoState();
+ const { currency , symbol} = CryptoState();
 
 const fetchCoins = async() => {
     setLoading(true);
@@ -36,7 +39,8 @@ const handleSearch= () => {
         coin.symbol.toLowerCase().includes(search)
     );
 };
-   
+
+
   return (
      <Container style={{ textAlign: "center" }}>
         <Typography
@@ -78,7 +82,9 @@ const handleSearch= () => {
                            </TableHead>
                                            
                         <TableBody>
-                        {handleSearch().map((row) => {
+                        {handleSearch()
+                         .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                        .map((row) => {
                           const profit = row.price_change_percentage_24th > 0;
                               
                           return (
@@ -112,18 +118,51 @@ const handleSearch= () => {
                             >
                               {row.symbol}
                             </span>
-                            <span style={{ color: "black" }}>
-                              {row.name}
-                            </span>
+                            <span style={{ color: "black" }}>{row.name}</span>
                           </div>
                                </TableCell>
+                               <TableCell align="right">
+                          {symbol}{" "}
+                          {numberWithCommas(row.current_price.toFixed(2))}
+                        </TableCell>
+                        <TableCell
+                          align="right"
+                          style={{
+                            color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+                            fontWeight: 500,
+                          }}
+                        >
+                          {profit && "+"}
+                          {row.price_change_percentage_24h.toFixed(2)}%
+                        </TableCell>
+                        <TableCell align="right">
+                          {symbol}{" "}
+                          {numberWithCommas(
+                            row.market_cap.toString().slice(0, -6)
+                          )}
+                          M
+                        </TableCell>
                             </TableRow>
                           );
                         })}
                         </TableBody>
                     </Table>
-            )}
+            )} 
         </TableContainer>
+
+        <Pagination
+         style={{
+            padding: 20,
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        count={(handleSearch()?.length/10).toFixed(0)}
+         onChange={(_, value) => {
+            setPage(value);
+            window.scroll(0, 450);
+          }}
+          />
      </Container>   
   );
 };
