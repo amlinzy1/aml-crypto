@@ -118,7 +118,7 @@ const handleSearch= () => {
                             >
                               {row.symbol}
                             </span>
-                            <span style={{ color: "black" }}>{row.name}</span>
+                            <span style={{ color: "purple" }}>{row.name}</span>
                           </div>
                                </TableCell>
                                <TableCell align="right">
