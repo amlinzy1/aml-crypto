@@ -6,6 +6,7 @@ import { SingleCoin } from "../config/api";
 import { LinearProgress, makeStyles, Typography } from '@material-ui/core';
 import CoinInfo from '../components/CoinInfo';
 import { numberWithCommas } from '../components/Banner/Carousel';
+import HtmlParser from 'react-html-parser';
 
 
 const CoinPage = () => {
@@ -27,19 +28,14 @@ useEffect(() => {
    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
-const useStyles = makeStyles((theme) => ({
+const useStyles=makeStyles(() => ({
   container: {
     display: "flex",
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      alignItems: "center",
-    },
+
   },
   sidebar: {
     width: "30%",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-    },
+  
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -70,7 +66,7 @@ if (!coin) return <LinearProgress style={{ backgroundColor: "purple" }} />;
           {coin?.name}
         </Typography>
         <Typography variant="subtitle1" className={classes.description}>
-          {(coin?.description.en.split(". ")[0])}.
+          {HtmlParser(coin?.description.en.split(". ")[0])}.
         </Typography>
         <div className={classes.marketData}>
         <span style={{ display: "flex" }}>

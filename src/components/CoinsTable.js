@@ -58,9 +58,8 @@ const handleSearch= () => {
           />
 
         <TableContainer>
-            {
-                loading ? (
-                     <LinearProgress style={{ backgroundColor: "purple" }} />
+            {loading ? (
+             <LinearProgress style={{ backgroundColor: "purple" }} />
                 ) : (
                     <Table>
                         <TableHead style={{backgroundColor: "#9e55cf" }}>
