@@ -48,7 +48,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const classes = useStyles;
+const classes = useStyles();
 
 if (!coin) return <LinearProgress style={{ backgroundColor: "purple" }} />;
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { CryptoState } from '../CryptoContext';
 import { HistoricalChart } from '../config/api'
 import { Line } from 'react-chartjs-2';
-import { CircularProgress, makeStyles, ThemeProvider, createTheme } from '@material-ui/core';
+import {  makeStyles, ThemeProvider, createTheme } from '@material-ui/core';
 const CoinInfo = ({ coin }) => {
 const [historicData, setHistoricData] = useState();
 const [days, setDays] = useState(1);
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const classes = useStyles;
+const classes = useStyles();
 
   return (
     <ThemeProvider theme={darkTheme}>
