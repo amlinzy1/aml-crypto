@@ -28,13 +28,19 @@ useEffect(() => {
    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
   },
   sidebar: {
-     width: "30%",
-     
+    width: "30%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -45,6 +51,31 @@ const useStyles = makeStyles(() => ({
     fontWeight: "bold",
     marginBottom: 20,
     fontFamily: "Space Grotesk",
+  },
+  description: {
+    width: "100%",
+    fontFamily: "Space Grotesk",
+    padding: 25,
+    paddingBottom: 15,
+    paddingTop: 0,
+    textAlign: "justify",
+  },
+  marketData: {
+    alignSelf: "start",
+    padding: 25,
+    paddingTop: 10,
+    width: "100%",
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+      justifyContent: "space-around",
+    },
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    [theme.breakpoints.down("xs")]: {
+      alignItems: "start",
+    },
   },
 }));
 
