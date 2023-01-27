@@ -40,7 +40,7 @@ const Banner = () => {
         }}
        >
          AML Crypto
-       </Typography>
+       </Typography> 
        <Typography
         variant="subtitle2"
         style={{

@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { CryptoState } from "../CryptoContext";
 import { SingleCoin } from "../config/api";
-import { LinearProgress, makeStyles, Typography } from '@material-ui/core';
+import { LinearProgress, Typography } from '@material-ui/core';
 import CoinInfo from '../components/CoinInfo';
 import { numberWithCommas } from '../components/Banner/Carousel';
 import HtmlParser from 'react-html-parser';
-
+import { makeStyles } from '@material-ui/styles';
 
 const CoinPage = () => {
 const { id } = useParams();
@@ -28,14 +28,13 @@ useEffect(() => {
    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
-const useStyles=makeStyles(() => ({
+const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
-
   },
   sidebar: {
-    width: "30%",
-  
+     width: "30%",
+     
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -55,7 +54,7 @@ if (!coin) return <LinearProgress style={{ backgroundColor: "purple" }} />;
 
   return (
    <div className={classes.container}>
-    <div className={classes.sidebar}>
+     <div className={classes.sidebar}>
     <img
           src={coin?.image.large}
           alt={coin?.name}
@@ -71,23 +70,6 @@ if (!coin) return <LinearProgress style={{ backgroundColor: "purple" }} />;
         <div className={classes.marketData}>
         <span style={{ display: "flex" }}>
           <Typography variant="h5" className={classes.heading}>
-            Current Price:
-            </Typography>
-            &nbsp; &nbsp;
-            <Typography
-            variant="h5"
-            style={{
-              fontFamily: "Space Grotesk",
-            }}
-            >
-             {symbol}{" "}
-              {numberWithCommas(
-                coin?.market_data.current_price[currency.toLowerCase()]
-             )}
-            </Typography>
-        </span>
-        <span style={{ display: "flex" }}>
-          <Typography variant="h5" className={classes.heading}>
             Rank:
             </Typography>
             &nbsp; &nbsp;
@@ -97,7 +79,24 @@ if (!coin) return <LinearProgress style={{ backgroundColor: "purple" }} />;
               fontFamily: "Space Grotesk",
             }}
             >
-              {coin?.market_cap_rank}
+             {coin?.market_cap_rank}
+            </Typography>
+        </span>
+        <span style={{ display: "flex" }}>
+          <Typography variant="h5" className={classes.heading}>
+             Current Price:
+            </Typography>
+            &nbsp; &nbsp;
+            <Typography
+            variant="h5"
+            style={{
+              fontFamily: "Space Grotesk",
+            }}
+            >
+              {symbol}{" "}
+              {numberWithCommas(
+                coin?.market_data.current_price[currency.toLowerCase()]
+             )}
             </Typography>
         </span>
         <span style={{ display: "flex" }}>

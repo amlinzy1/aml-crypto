@@ -8,8 +8,8 @@ import { makeStyles } from "@material-ui/core";
 function App() {
     const useStyles = makeStyles(() => ({
       App: {
-        backgroundColor: "#14161a",
-        color: "white",
+        backgroundColor: "#6229cc",
+        color: "purple",
         minHeight: "100vh",
       }
     }));
