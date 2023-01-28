@@ -1,4 +1,4 @@
-import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, ThemeProvider  } from '@material-ui/core';
+import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography,  } from '@material-ui/core';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +42,6 @@ const handleSearch= () => {
 
 
   return (
-    <ThemeProvider theme={darkTheme}>
      <Container style={{ textAlign: "center" }}>
         <Typography
         variant="h4"
@@ -163,8 +162,7 @@ const handleSearch= () => {
             window.scroll(0, 450);
           }}
           />
-     </Container>
-     </ThemeProvider>   
+     </Container>   
   );
 };
 
