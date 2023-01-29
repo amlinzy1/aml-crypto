@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { CryptoState } from '../CryptoContext';
-import { HistoricalChart } from '../config/api'
-import { Line } from 'react-chartjs-2';
+import { HistoricalChart } from '../config/api';
 import {  makeStyles, ThemeProvider, createTheme } from '@material-ui/core';
 const CoinInfo = ({ coin }) => {
 const [historicData, setHistoricData] = useState();
@@ -43,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginTop: 25,
     padding: 40,
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down ("md")]: {
       width: "100%",
       marginTop: 0,
       padding: 20,
