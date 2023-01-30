@@ -85,7 +85,17 @@ const classes = useStyles();
 
         datasets: [{ 
             data: historicData.map((coin) => coin[1]),
-           }],
+            label: `Price ( Past ${days} Days ) in ${currency}`,
+            borderColor:"#9520e3",
+           },
+          ],
+        }}
+        options={{
+          elements: {
+            point: {
+              radius: 1,
+            },
+          },
         }}
         />
       </>
