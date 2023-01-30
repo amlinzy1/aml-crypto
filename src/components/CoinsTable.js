@@ -96,7 +96,7 @@ const handleSearch= () => {
                                <TableCell 
                                component="th"
                                scope="row"
-                               styles={{
+                               style={{
                                 display: "flex",
                                 gap: 15,
                                }}

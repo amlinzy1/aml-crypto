@@ -5,7 +5,8 @@ import { HistoricalChart } from '../config/api';
 import {  makeStyles, ThemeProvider, createTheme, CircularProgress } from '@material-ui/core';
 import { Line } from 'react-chartjs-2';
 import { registerables, Chart } from "chart.js";
-
+import { chartDays } from '../config/data';
+import SelectButton from './SelectButton';
 
 Chart.register(...registerables);
 
@@ -98,6 +99,24 @@ const classes = useStyles();
           },
         }}
         />
+        <div
+         style={{
+          display: "flex",
+          marginTop: 20,
+          justifyContent: "space-around",
+          width: "100%",
+         }}
+        >
+          {chartDays.map((day) => (
+            <SelectButton
+            key={day.value}
+            onClick={()=>setDays(day.value)}
+            selected={day.value === days}
+            >
+              {day.label}
+              </SelectButton>
+          ))}
+        </div>
       </>
    )}
   </div>
