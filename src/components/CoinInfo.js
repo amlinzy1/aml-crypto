@@ -4,10 +4,10 @@ import { CryptoState } from '../CryptoContext';
 import { HistoricalChart } from '../config/api';
 import {  makeStyles, ThemeProvider, createTheme, CircularProgress } from '@material-ui/core';
 import { Line } from 'react-chartjs-2';
-import { CategoryScale, Chart } from "chart.js";
+import { registerables, Chart } from "chart.js";
 
 
-Chart.register(CategoryScale);
+Chart.register(...registerables);
 
 const CoinInfo = ({ coin }) => {
 const [historicData, setHistoricData] = useState();
