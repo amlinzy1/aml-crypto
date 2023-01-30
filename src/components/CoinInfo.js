@@ -4,7 +4,7 @@ import { CryptoState } from '../CryptoContext';
 import { HistoricalChart } from '../config/api';
 import {  makeStyles, ThemeProvider, createTheme, CircularProgress } from '@material-ui/core';
 import { Line } from 'react-chartjs-2';
-
+import chart from 'chart.js/auto';
 const CoinInfo = ({ coin }) => {
 const [historicData, setHistoricData] = useState();
 const [days, setDays] = useState(1);
