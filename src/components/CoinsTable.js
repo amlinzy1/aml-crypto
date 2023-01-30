@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
-import { Classnames } from 'react-alice-carousel';
+
 import { numberWithCommas } from './Banner/Carousel';
 import { Pagination } from '@material-ui/lab';
-
+import { makeStyles } from '@material-ui/styles';
 
 const CoinsTable = () => {
 const [coins, setCoins] = useState([]);
@@ -41,6 +41,9 @@ const handleSearch= () => {
     );
 };
 
+const useStyles = makeStyles(() => ({}));
+
+const classes = useStyles();
 
   return (
      <Container style={{ textAlign: "center" }}>
@@ -90,7 +93,7 @@ const handleSearch= () => {
                           return (
                             <TableRow
                             onClick={() => navigate(`/coins/${row.id}`)}
-                            className={Classnames.row}
+                            className={classes.row}
                             key={row.name}
                             >
                                <TableCell 
