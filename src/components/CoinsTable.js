@@ -1,6 +1,6 @@
 import { Container, LinearProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography,  } from '@material-ui/core';
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
@@ -132,6 +132,7 @@ const classes = useStyles();
                           align="right"
                           style={{
                             color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+                            color: profit < 0 ? "rgb(20, 222, 44)" : "green",
                             fontWeight: 500,
                           }}
                         >
